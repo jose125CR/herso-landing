@@ -1,0 +1,77 @@
+---
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
+const clientsDirFsPath = fileURLToPath(new URL('../../../public/images/clients/', import.meta.url));
+let clientLogos: string[] = [];
+try {
+  clientLogos = fs.readdirSync(clientsDirFsPath).filter((f) => /\.(png|jpe?g|svg|webp|avif)$/i.test(f)).sort();
+} catch {}
+---
+
+<style>
+  .clients-carousel-section { background: transparent; }
+  .clients-carousel-viewport {
+    overflow: hidden; width: 100%; position: relative; height: 140px; display: flex; align-items: center; background: transparent;
+    mask: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
+  .clients-carousel-viewport::before, .clients-carousel-viewport::after { content: ''; position: absolute; top: 0; width: 150px; height: 100%; z-index: 10; pointer-events: none; }
+  .clients-carousel-viewport::before { left: 0; background: linear-gradient(90deg, transparent 0%, transparent 100%); }
+  .clients-carousel-viewport::after { right: 0; background: linear-gradient(270deg, transparent 0%, transparent 100%); }
+  .clients-carousel-track { display: flex; align-items: center; gap: 6rem; width: max-content; will-change: transform; }
+  .client-logo { height: 80px; width: auto; max-width: 180px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: filter 0.3s, transform 0.3s; flex-shrink: 0; }
+  .client-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.05); }
+</style>
+
+<div class="clients-carousel-section py-12">
+  <h2 class="text-center text-2xl md:text-3xl font-bold mb-8 uppercase" style="font-family: 'Midnight', serif;">CLIENTS THAT TRUST US</h2>
+  <div class="clients-carousel-viewport">
+    <div class="clients-carousel-track" data-clients-track>
+      {clientLogos.map((logo) => (
+        <img src={`/images/clients/${logo}`} alt={logo.replace(/[-_]/g, ' ').replace(/\.[a-z0-9]+$/i, '')} class="client-logo" />
+      ))}
+    </div>
+  </div>
+</div>
+
+{clientLogos.length > 0 && (
+  <script is:inline>
+    const SPEED = 50; // px/s
+    function initCarousel(){
+      const track = document.querySelector('[data-clients-track]');
+      if(!track) return;
+      const originals = [...track.children];
+      if(!originals.length) return;
+      const style = getComputedStyle(track);
+      const gap = parseFloat(style.gap || style.columnGap || '96') || 96;
+      const measure = (nodes) => nodes.reduce((w,el)=> w + el.getBoundingClientRect().width,0) + (nodes.length - 1) * gap;
+      let baseSet = [...originals];
+      let baseWidth = measure(baseSet);
+      while(baseWidth < window.innerWidth && baseSet.length < 500){
+        const clones = baseSet.slice(0, originals.length).map(n=>{ const c=n.cloneNode(true); c.setAttribute('aria-hidden','true'); track.appendChild(c); return c; });
+        baseSet = [...baseSet, ...clones];
+        baseWidth = measure(baseSet);
+      }
+      const baseCount = baseSet.length;
+      for(let r=0;r<2;r++){
+        for(let i=0;i<baseCount;i++){
+          const c = baseSet[i].cloneNode(true);
+          c.setAttribute('aria-hidden','true');
+          track.appendChild(c);
+        }
+      }
+      let pos = baseWidth; // current scroll distance into the triple set
+      track.style.transform = `translate3d(${-pos}px,0,0)`;
+      let last;
+      function frame(t){
+        if(last!=null){
+          const dt=(t-last)/1000; pos += SPEED*dt; if(pos >= 2*baseWidth) pos -= baseWidth; // keep within [baseWidth,2*baseWidth)
+          track.style.transform = `translate3d(${-pos}px,0,0)`;
+        }
+        last=t; requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', initCarousel); else initCarousel();
+  </script>
+)}
