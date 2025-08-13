@@ -5,6 +5,7 @@ import BaseHead from "@components/BaseHead.astro";
 import BackgroundTexture from "@components/global/BackgroundTexture.astro";
 import Footer from "@components/global/Footer.astro";
 import Navigation from "@components/global/Navigation.astro";
+import Contact from "@/components/forms/Contact.astro";
 import { getLangFromUrl } from "../i18n/utils";
 
 const { pathname } = Astro.url;
@@ -69,6 +70,7 @@ function cursorFollowerActive() {
 	const paths = ["", "/", "/it/", "/it"];
 	return paths.includes(pathname);
 }
+const isContactPage = /(?:^|\/)((it)\/)?contact\/?$/.test(pathname);
 ---
 
 <html lang={lang}>
@@ -77,10 +79,12 @@ function cursorFollowerActive() {
 		<AstroSeo {...seo} />
 	</head>
 	<body class="bg-slate-50">
+		<style>html{ scroll-behavior: smooth; }</style>
 		<BackgroundTexture />
 		<Navigation />
 		{cursorFollowerActive() && <BlobCursorFollower />}
 		<slot />
+		{!isContactPage && <Contact />}
 		<Footer />
 	</body>
 </html>
