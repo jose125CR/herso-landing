@@ -15,17 +15,17 @@ let pages = [
 		title: "Home",
 		url: "/",
 	},
-	// {
-	// 	title: "Services",
-	// 	url: "/services",
-	// },
 	{
-		title: "Blog",
+		title: "About Us",
+		url: "/about",
+	},
+	{
+		title: "Projects",
 		url: "/blog/",
 	},
 	{
-		title: t("contacts"),
-		url: "/contact/",
+		title: t("contact"),
+		url: "/#contact",
 	},
 ];
 
@@ -160,7 +160,7 @@ const { pathname } = Astro.url;
 				<div
 					class="shadow-thick resizable nav-container squircle relative mx-auto flex w-full flex-col justify-center overflow-x-hidden bg-zinc-900 backdrop-blur-xl backdrop-filter md:flex-row-reverse">
 					<div class="flex flex-row items-center justify-end md:hidden">
-						<a class="px-3 py-[0.4rem] pl-4" href={translatePath("/contact/")} aria-label="Contact Page">
+						<a class="px-3 py-[0.4rem] pl-4" href={translatePath("/#contact")} aria-label="Contact">
 							<Icon class="text-white" name="octicon:mail-16" width="20" data-xbind.class="{'hidden': open}" />
 						</a>
 						<button
@@ -192,27 +192,36 @@ const { pathname } = Astro.url;
 						<ul
 							class="flex list-none flex-col items-end justify-center gap-2 px-2 text-center text-3xl md:flex-row md:items-center md:text-base">
 							{
-								pages.map((page) => (
-									<li data-cursor-hover>
-										<a
-											href={translatePath(page.url)}
-											class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
-												page.url === pathname ||
-												page.url === pathname.replace(/^\/it|\/$/, "") ||
-												(page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/it/blog")))
-													? "active"
-													: ""
-											}`}>
-											<span class="menu-item-container inline-block">
-												<span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
-													{page.title}
-												</span>
-											</span>
-										</a>
-									</li>
-								))
-							}
-							<li>
+									pages.map((page, index) => {
+										let linkId = undefined;
+										if (page.title === "Projects") linkId = "nav-projects-link";
+										if (page.url === "/#contact") linkId = "nav-contact-link";
+										if (page.title === "About Us") linkId = "nav-about-link";
+										return (
+											<li data-cursor-hover style={`--index: ${index}`}>
+												<a
+													id={linkId}
+													href={translatePath(page.url)}
+													class={`inline-block cursor-pointer px-1 py-[0.33rem] ${
+														page.url === pathname ||
+														page.url === pathname.replace(/^\/it|\/$/, "") ||
+														(page.url === "/blog" && (pathname.startsWith("/blog") || pathname.startsWith("/it/blog"))) ||
+														(page.url === "/about" && (pathname.startsWith("/about") || pathname.startsWith("/it/about")))
+															? "active"
+															: ""
+													}`}
+												>
+													<span class="menu-item-container inline-block">
+														<span class="menu-item px-4 py-1 font-semibold uppercase tracking-wide text-zinc-400 hover:text-white focus:text-white focus:shadow-none focus:outline-none">
+															{page.title}
+														</span>
+													</span>
+												</a>
+											</li>
+										);
+									})
+								}
+							<!-- <li>
 								<a href={translatePath(path, `${lang === "it" ? "en" : "it"}`)} class="inline-block cursor-pointer px-1 py-[0.33rem]">
 									<span class="menu-item-container inline-block">
 										<span
@@ -221,7 +230,7 @@ const { pathname } = Astro.url;
 										</span>
 									</span>
 								</a>
-							</li>
+							</li> -->
 						</ul>
 					</nav>
 				</div>
@@ -233,6 +242,12 @@ const { pathname } = Astro.url;
 <style>
 	.navigation {
 		mix-blend-mode: difference;
+		transition: all 1.2s ease-in-out;
+		position: fixed !important;
+		top: 0 !important;
+		right: 0 !important;
+		z-index: 9999 !important;
+		width: auto;
 	}
 	.navigation.navbar-open {
 		mix-blend-mode: luminosity;
@@ -247,6 +262,21 @@ const { pathname } = Astro.url;
 			padding: 2rem var(--base-padding-x);
 		}
 	}
+	
+	header .navigation,
+	.navigation,
+	[data-navigation] {
+		position: fixed !important;
+		top: 0 !important;
+		right: 0 !important;
+		z-index: 9999 !important;
+		left: auto !important;
+		width: auto !important;
+	}
+	
+	.nav-container {
+		transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
 	.resizable:before {
 		content: "|";
 		position: absolute;
@@ -257,20 +287,21 @@ const { pathname } = Astro.url;
 		color: #8e8e8e;
 		opacity: 0;
 		text-shadow: 4px 0 #8e8e8e;
-		transition: all 0.5s ease;
+		transition: all 1.2s ease;
 	}
 	.collapsed .resizable:before {
 		opacity: 1;
 	}
 	nav a .menu-item-container {
 		border-radius: 0.45rem;
+		transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 	}
 	nav a.active .menu-item-container,
 	nav a:hover .menu-item-container {
-		transition: background-color 0.3s ease;
+		transition: background-color 1.0s ease;
 	}
 	nav ul:not(.collapsed) a.active .menu-item-container {
-		transition-duration: 0.5s;
+		transition-duration: 0.8s;
 		background: #aaa;
 	}
 	nav ul:not(.collapsed) a:hover .menu-item-container {
@@ -284,14 +315,96 @@ const { pathname } = Astro.url;
 	nav ul.collapsed a:hover .menu-item-container .menu-item {
 		color: #fff;
 	}
+	.nav-container.collapsed {
+		min-width: 125px;
+		max-width: 200px;
+		width: auto !important;
+		transform: scale(0.95);
+		transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	
+	nav ul.collapsed {
+		justify-content: center !important;
+		transform: translateX(0) !important;
+		padding: 0 1rem;
+		transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	
+	nav ul.collapsed li {
+		flex: none;
+		width: auto;
+		transition: all 1.0s ease;
+	}
+	
+	nav ul.collapsed .menu-item {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 150px;
+		transition: all 1.0s ease;
+	}
+
+	.nav-container:not(.collapsed) {
+		width: auto !important;
+		min-width: auto !important;
+		max-width: none !important;
+		transform: scale(1);
+		transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	nav ul:not(.collapsed) {
+		transform: translateX(0) !important;
+		justify-content: flex-end !important;
+		transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	nav ul:not(.collapsed) li {
+		display: block !important;
+		flex: none;
+		width: auto;
+		transition: all 1.0s ease;
+	}
+	.navigation:not(.collapsed) nav ul li {
+		display: block !important;
+		opacity: 1;
+		transform: translateY(0);
+		transition: all 1.0s ease;
+	}
+	
+	nav ul li {
+		transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	}
+	nav ul.collapsed li:not(.active) {
+		opacity: 0;
+		transform: translateY(-10px);
+		transition: all 1.0s ease;
+	}
+	.navigation.scrolled {
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+		transition: all 0.8s ease;
+	}
+	@keyframes slideInFromRight {
+		from {
+			opacity: 0;
+			transform: translateX(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(0);
+		}
+	}
+	nav ul:not(.collapsed) li {
+		animation: slideInFromRight 0.6s ease forwards;
+		animation-delay: calc(var(--index, 0) * 0.08s);
+	}
 </style>
 
 <script>
 	import { gsap } from "gsap";
 	import { ScrollTrigger } from "gsap/ScrollTrigger";
 	import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+	import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-	gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger);
+	gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger, ScrollToPlugin);
 
 	function init() {
 		gsap.timeline({
@@ -307,63 +420,102 @@ const { pathname } = Astro.url;
 		let menuCollapsed = false;
 
 		const pageLinksUl = document.querySelector("header .nav-container nav ul");
-
-		if (!pageLinksUl) {
+		const navContainer = document.querySelector("header .nav-container");
+		if (!pageLinksUl || !navContainer) {
 			return;
 		}
 
 		let menuCollapseTl = gsap
 			.timeline({
 				defaults: {
-					ease: "back.inOut(1.7)",
-					duration: 0.4,
+					ease: "power2.inOut",
+					duration: 1.2,
 				},
 				paused: true,
 				onStart: () => {
 					pageLinksUl.classList.add("collapsed");
+					navContainer.classList.add("collapsed");
+					hideInactiveLinks();
 				},
+				onReverseComplete: () => {
+					pageLinksUl.classList.remove("collapsed");
+					navContainer.classList.remove("collapsed");
+					showAllLinks();
+				}
 			})
-			.to("header .nav-container", { width: 125 })
+			.to("header .nav-container", { 
+				width: () => {
+					const activeLink = pageLinksUl.querySelector("a.active .menu-item");
+					if (activeLink) {
+						const textWidth = activeLink.textContent.length * 8;
+						return Math.max(textWidth + 60, 125);
+					}
+					return 125;
+				}
+			})
 			.to(
 				pageLinksUl,
 				{
 					x: () => {
-						const pathName = window.location.pathname;
-
-						if (pathName === "/" || pathName === "/it/") {
-							return "9.5rem";
-						} else if (pathName.startsWith("/blog") || pathName.startsWith("/it/blog")) {
-							return "3.5rem";
-						}
-
-						return "-3.5rem";
+						return "0rem";
 					},
 				},
 				"<",
 			);
 
+		function hideInactiveLinks() {
+			if (!pageLinksUl) return;
+			Array.from(pageLinksUl.children).forEach((li) => {
+				const a = li.querySelector("a");
+				const liElement = li as HTMLElement;
+				if (a && !a.classList.contains("active")) {
+					liElement.style.display = "none";
+				}
+			});
+		}
+		function showAllLinks() {
+			if (!pageLinksUl) return;
+			Array.from(pageLinksUl.children).forEach((li) => {
+				const liElement = li as HTMLElement;
+				liElement.style.display = "";
+			});
+		}
 		const isTouchDevice = window.matchMedia("(hover: none)").matches;
 
-		if (window.innerWidth >= 768 && !isTouchDevice) {
-			function expandMenu() {
-				menuCollapseTl.reverse();
-				pageLinksUl?.classList.remove("collapsed");
-				document.querySelector("header .navigation")?.classList.remove("collapsed");
-				menuCollapsed = false;
+		function expandMenu() {
+			menuCollapseTl.reverse();
+			pageLinksUl?.classList.remove("collapsed");
+			navContainer?.classList.remove("collapsed");
+			document.querySelector("header .navigation")?.classList.remove("collapsed");
+			menuCollapsed = false;
+			
+			if (pageLinksUl) {
+				gsap.set(pageLinksUl.children, { 
+					opacity: 1, 
+					y: 0,
+					duration: 1.0,
+					ease: "power2.out",
+					stagger: 0.15
+				});
 			}
+		}
 
-			function collapseMenu() {
-				if (window.scrollY > 200) {
-					menuCollapseTl.play();
-					pageLinksUl?.classList.add("collapsed");
-					document.querySelector("header .navigation")?.classList.add("collapsed");
-					menuCollapsed = true;
-				}
+		function collapseMenu() {
+			if (window.scrollY > 200) {
+				menuCollapseTl.play();
+				pageLinksUl?.classList.add("collapsed");
+				navContainer?.classList.add("collapsed");
+				document.querySelector("header .navigation")?.classList.add("collapsed");
+				menuCollapsed = true;
 			}
+		}
 
-			collapseMenu();
-
-			const navContainer = document.querySelector(".nav-container") as HTMLElement;
+		function initMenuBehavior() {
+			if (window.scrollY <= 200) {
+				expandMenu();
+			} else {
+				collapseMenu();
+			}
 
 			function mouseEnterHandler() {
 				isHoveringMenu = true;
@@ -372,7 +524,9 @@ const { pathname } = Astro.url;
 
 			function mouseLeaveHandler() {
 				isHoveringMenu = false;
-				collapseMenu();
+				if (window.scrollY > 200) {
+					collapseMenu();
+				}
 			}
 
 			function handleScroll() {
@@ -392,8 +546,48 @@ const { pathname } = Astro.url;
 			window?.removeEventListener("scroll", handleScroll);
 			window?.addEventListener("scroll", handleScroll);
 		}
+
+		if (window.innerWidth >= 768 && !isTouchDevice) {
+			initMenuBehavior();
+		} else {
+			expandMenu();
+			window?.addEventListener("scroll", () => {
+				if (window.scrollY > 200) {
+					document.querySelector("header .navigation")?.classList.add("scrolled");
+				} else {
+					document.querySelector("header .navigation")?.classList.remove("scrolled");
+				}
+			});
+		}
+		var navProjects = document.getElementById("nav-projects-link");
+		if (navProjects) {
+			navProjects.addEventListener("click", function (e) {
+				if (window.location.pathname === "/" || window.location.pathname === "/it/") {
+					e.preventDefault();
+					gsap.to(window, { duration: 0.5, scrollTo: "#projects" });
+				}
+			});
+		}
+		var navContact = document.getElementById("nav-contact-link");
+		if (navContact) {
+			navContact.addEventListener("click", function (e) {
+				if (window.location.pathname === "/" || window.location.pathname === "/it/") {
+					e.preventDefault();
+					gsap.to(window, { duration: 0.5, scrollTo: "#contact" });
+				}
+			});
+		}
+		var navAbout = document.getElementById("nav-about-link");
+		if (navAbout) {
+			navAbout.addEventListener("click", function (e) {
+				if (window.location.pathname === "/" || window.location.pathname === "/it/") {
+					e.preventDefault();
+					gsap.to(window, { duration: 0.5, scrollTo: "#about-us" });
+				}
+			});
+		}
 	}
 
-	document.removeEventListener("DOMContentLoaded", init); // astro:page-load
-	document.addEventListener("DOMContentLoaded", init); // astro:page-load
+	document.removeEventListener("DOMContentLoaded", init);
+	document.addEventListener("DOMContentLoaded", init);
 </script>
