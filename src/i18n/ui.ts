@@ -15,7 +15,7 @@ export const ui = {
 		services: "Services",
 		homepage: "Homepage",
 		tagline:
-			"Our aim is to make your website a key driver for sales and conversions, combining engaging design, easy navigation, and strong SEO. We focus on attracting visitors and leading them effortlessly to purchase, ensuring your products shine. Your success is our mission.",
+			"I’m not going to bore you with the cores and values this company holds. I’m just going to tell you that we are a group of committed developers that can help you materialize your idea or be part of your existing team.\n\nWhile is true that the company is young, it was founded by developers with a vast experience with agile methodologies, modern technologies and taking mobile and web applications to production.\n\nThis company was founded to do what we love. We want coding to stay fun for us and we are looking to be challenged.\n\nThe engineers in this company have contributed to develop applications for Universal Music, Tractor Supply, Groups 360, and more.",
 		"projects.yours": "Your project",
 		"projects.see": "See project",
 		"hero.title.main": "We create",
@@ -24,7 +24,7 @@ export const ui = {
 		"hero.title.3": "designs",
 		"hero.title.4": "brands",
 		"hero.subtitle":
-			"Our digital agency specializes in crafting captivating websites that convert and sell. Contact us for a free consultation.",
+			"A software development company that rocks.\nHelping companies prototype & launch their ideas faster.",
 		"hero.scroll": "scroll down to explore more",
 		"websites.title": "Websites",
 		"apps.title": "Apps",
