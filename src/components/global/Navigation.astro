@@ -40,8 +40,8 @@ const { pathname } = Astro.url;
 ---
 
 <header>
-	<a href={translatePath("/")} aria-label="Home" class="logo absolute z-50 flex h-[8rem] items-center md:h-[10rem]">
-		<img src="/herso-Logo.png" alt="Herso Logo" class="logo-img w-72" style="object-fit:contain; height: 4.25rem;" />
+	<a href={translatePath("/")} aria-label="Home" class="logo absolute z-50 flex items-center" style="top: -4px;">
+		<img src="/herso-Logo.png" alt="Herso Logo" class="logo-img w-48 md:w-72" style="object-fit:contain; height: 3rem; md:height: 4.25rem;" />
 	</a>
 	<div data-xdata="{ open: false }" class="navigation fixed right-0 top-0 z-50" data-xbind.class="{'w-full navbar-open': open}">
 		<div class="ml-auto md:max-w-fit" data-xbind.class="{'max-w-3xl': open, 'max-w-[8rem]': !open }">

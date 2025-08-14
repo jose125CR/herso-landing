@@ -32,7 +32,13 @@ const translatePath = useTranslatedPath(lang);
 			ABOUT US
 		</h2>
 		<p id="services-tagline" class="max-w-5xl text-center text-4xl md:text-5xl lg:text-7xl mx-auto">
-			{t("tagline")}
+			{t("tagline")
+				.split("\n")
+				.map((line, idx) =>
+					line.trim() === ""
+						? <br />
+						: <span>{line}<br /></span>
+				)}
 		</p>
 	</div>
 </div>

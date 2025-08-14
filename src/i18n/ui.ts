@@ -14,14 +14,15 @@ export const ui = {
 		projects: "Projects",
 		services: "Services",
 		homepage: "Homepage",
-		tagline:
-			`We're not here to hit you with a wall of corporate jargon, vision statements, or those "core values" everyone copies from the same LinkedIn post. We're here to build.
-Founded in the coastal hills of Uvita; Hermosa Software is a crew of experienced developers who take ideas from "cool concept" to "live and in production" without drowning you in endless emails, meetings that should've been Slack messages, or overthinking every pixel until launch day never comes.
-We've worked with scrappy startups, massive corporations, and everything in between—Our developers have shipped code for brands like Universal Music, Tractor Supply, and Ford Motor Company.
-We started this company because we love coding (yes, we're those people), and we want to keep it fun while taking on challenges that keep us sharp. Whether you're building your MVP, leveling up your existing platform, or need us to plug into your team and push things forward—we're in.
-We move fast. We get things done. And we make sure the journey's as smooth as the launch.
-PD: Please just don't ask us do any PHP.
-			Proudly, from Costa Rica.`,
+		tagline: `We're not here to hit you with a wall of corporate jargon, vision statements, or those "core values" everyone copies from the same LinkedIn post. We're here to build.
+ Founded in the coastal hills of Uvita; Hermosa Software is a crew of experienced developers who take ideas from "cool concept" to "live and in production" without drowning you in endless emails, meetings that should've been Slack messages, or overthinking every pixel until launch day never comes.
+ We've worked with scrappy startups, massive corporations, and everything in between—Our developers have shipped code for brands like Universal Music, Tractor Supply, and Ford Motor Company.
+ We started this company because we love coding (yes, we're those people), and we want to keep it fun while taking on challenges that keep us sharp. Whether you're building your MVP, leveling up your existing platform, or need us to plug into your team and push things forward—we're in.
+ We move fast. We get things done. And we make sure the journey's as smooth as the launch.
+
+ PS: Please just don't ask us do any PHP.
+
+ - Proudly, from Costa Rica.`,
 		"projects.yours": "Your project",
 		"projects.see": "See project",
 		"hero.title.main": "We create",
@@ -32,18 +33,18 @@ PD: Please just don't ask us do any PHP.
 		"hero.subtitle":
 			"A software development company that rocks.\nHelping companies prototype & launch their ideas faster.",
 		"hero.scroll": "scroll down to explore more",
-		"websites.title": "Websites",
+		"websites.title": "Web Development",
 		"apps.title": "Apps",
 		"uiux.title": "UI/UX Design",
 		"seo.title": "SEO",
 		"advertising.title": "Staff Augmentation",
-	"websites.content": "At Hermosa Software, we specialize in crafting bespoke websites tailored to your brand's needs. Our approach combines aesthetic design with technical proficiency, ensuring your site is visually stunning, fast, and responsive across all devices.",
-	"apps.content": "We deliver top-tier app development services, focusing on creating intuitive, efficient, and engaging mobile applications. Whether for iOS, Android, or cross-platform, our apps are designed to enhance user experience and drive business growth.",
-	"uiux.content": "Our UI/UX design services are centered on creating user-centric interfaces that are both visually appealing and easy to navigate. We prioritize user experience, ensuring every design element aligns with the users' needs and enhances overall interaction with your digital products.",
-	"seo.content": "Hermosa Software's SEO services are designed to increase your website's visibility and drive organic traffic. We use a blend of the latest SEO strategies and techniques to improve your search engine rankings, focusing on both on-page and off-page optimization.",
-		"advertising.content": "Need more hands in your project? We can work with your team to help you get the application out the door.",
-	"privacy.wip": "Hermosa Software Privacy Notice",
-	"privacy.wip.content": "We value your privacy. Hermosa Software is committed to protecting your personal information and ensuring transparency in how we handle data. For questions or details, contact us at support@hermosasoftware.io.",
+		"websites.content": "Your website is your first impression—and slow, clunky sites kill trust.\nWe build websites that don't just look good—they move fast, and actually get used. From lightning-fast websites to more complex web applications or e-commerce powered by headless Shopify, we use modern tech to create experiences your users will love (and your competition will envy).",
+		"apps.content": "One codebase, every pocket. We build cross-platform apps with React Native that feel right at home on both iOS and Android—fast, smooth, and ready to impress.",
+		"uiux.content": "Looks aren't everything—unless we're talking about your app. If users have to think too hard, they'll leave.\nWe design interfaces that are as intuitive as they are beautiful, turning clicks into customers and keep them coming for more.",
+		"seo.content": "If your site isn't on the first page, it might as well be on page 99. We make sure search engines love you—optimizing speed, content, and structure so your customers can actually find you.",
+		"advertising.content": "Deadlines don't wait for hiring cycles. We plug our developers into your team like they've been there all along—adding skills, speed, and brainpower without the hiring headaches.",
+		"privacy.wip": "Hermosa Software Privacy Notice",
+		"privacy.wip.content": "We value your privacy. Hermosa Software is committed to protecting your personal information and ensuring transparency in how we handle data. For questions or details, contact us at support@hermosasoftware.io.",
 		"faqs.question1": "What's your favorite programming language?",
 		"faqs.answer1":
 			"We love TypeScript for its type safety and modern features, but we're also proficient in Python, JavaScript, and Go.",
@@ -79,7 +80,7 @@ PD: Please just don't ask us do any PHP.
 		"thanks.title": "Thank you",
 		"thanks.content": "We will get back to you as soon as possible",
 		"contact.title": "Contact",
-		"contact.subtitle": "Carrier Pigeons Welcome, but Email is Faster!",
+		"contact.subtitle": "Send us an email. We'll skip the boring parts.",
 		"contact.name": "Name",
 		"contact.email": "Email",
 		"contact.message": "Message",
