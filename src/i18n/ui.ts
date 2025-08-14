@@ -15,7 +15,13 @@ export const ui = {
 		services: "Services",
 		homepage: "Homepage",
 		tagline:
-			"I’m not going to bore you with the cores and values this company holds. I’m just going to tell you that we are a group of committed developers that can help you materialize your idea or be part of your existing team.\n\nWhile is true that the company is young, it was founded by developers with a vast experience with agile methodologies, modern technologies and taking mobile and web applications to production.\n\nThis company was founded to do what we love. We want coding to stay fun for us and we are looking to be challenged.\n\nThe engineers in this company have contributed to develop applications for Universal Music, Tractor Supply, Groups 360, and more.",
+			`We're not here to hit you with a wall of corporate jargon, vision statements, or those "core values" everyone copies from the same LinkedIn post. We're here to build.
+Founded in the coastal hills of Uvita; Hermosa Software is a crew of experienced developers who take ideas from "cool concept" to "live and in production" without drowning you in endless emails, meetings that should've been Slack messages, or overthinking every pixel until launch day never comes.
+We've worked with scrappy startups, massive corporations, and everything in between—Our developers have shipped code for brands like Universal Music, Tractor Supply, and Ford Motor Company.
+We started this company because we love coding (yes, we're those people), and we want to keep it fun while taking on challenges that keep us sharp. Whether you're building your MVP, leveling up your existing platform, or need us to plug into your team and push things forward—we're in.
+We move fast. We get things done. And we make sure the journey's as smooth as the launch.
+PD: Please just don't ask us do any PHP.
+			Proudly, from Costa Rica.`,
 		"projects.yours": "Your project",
 		"projects.see": "See project",
 		"hero.title.main": "We create",
@@ -30,12 +36,12 @@ export const ui = {
 		"apps.title": "Apps",
 		"uiux.title": "UI/UX Design",
 		"seo.title": "SEO",
-		"advertising.title": "Advertising",
+		"advertising.title": "Staff Augmentation",
 		"websites.content": "At Mintaka Studio, we specialize in crafting bespoke websites tailored to your brand's needs. Our approach combines aesthetic design with technical proficiency, ensuring your site is visually stunning, fast, and responsive across all devices.",
 		"apps.content": "We deliver top-tier app development services, focusing on creating intuitive, efficient, and engaging mobile applications. Whether for iOS, Android, or cross-platform, our apps are designed to enhance user experience and drive business growth.",
 		"uiux.content": "Our UI/UX design services are centered on creating user-centric interfaces that are both visually appealing and easy to navigate. We prioritize user experience, ensuring every design element aligns with the users' needs and enhances overall interaction with your digital products.",
 		"seo.content": "Mintaka Studio's SEO services are designed to increase your website's visibility and drive organic traffic. We use a blend of the latest SEO strategies and techniques to improve your search engine rankings, focusing on both on-page and off-page optimization.",
-		"advertising.content": "Our advertising services aim to maximize your ROI through targeted and effective ad campaigns. We specialize in creating compelling ad content and strategies that resonate with your audience, utilizing various platforms like Google Ads and social media to enhance your brand's reach and engagement.",
+		"advertising.content": "Need more hands in your project? We can work with your team to help you get the application out the door.",
 		"privacy.wip": "Work in progress",
 		"privacy.wip.content": "This page will be updated soon",
 		"faqs.question1": "What's your favorite programming language?",
