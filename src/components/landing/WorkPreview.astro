@@ -29,8 +29,8 @@ const allProjects = (await getCollection("projects"))
 
 <section id="projects" class:list={["section work-preview-section home-dark-section py-12", className]}>
 	<div class="col-span-12 col-start-1 mx-auto max-w-7xl">
-		<h2 class="sr-only">{t("projects")}</h2>
-		<ol class="grid grid-cols-1 gap-24 md:grid-cols-2 lg:gap-44">
+	<h2 class="text-center text-2xl md:text-3xl font-bold mb-16 md:mb-24 px-4 py-4 uppercase" style="font-family: 'Midnight', serif;">RECENT PROJECTS</h2>
+	<ol class="grid grid-cols-1 gap-24 md:grid-cols-2 lg:gap-44 mt-12 md:mt-20 lg:mt-24">
 			{
 				allProjects.map((project, index) => (
 					<WokCard

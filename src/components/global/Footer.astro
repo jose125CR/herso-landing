@@ -13,38 +13,36 @@ const translatePath = useTranslatedPath(lang);
 	<div class="relative grid grid-cols-6 gap-y-20 lg:grid-cols-12 lg:text-xl">
 		<div class="col-span-6 col-start-1 grid grid-cols-6 gap-6 lg:col-span-8">
 			<div class="col-span-2 col-start-4 flex flex-col gap-2 lg:col-span-3">
-				<a href="https://twitter.com//" target="_blank">Twitter / X</a>
-				<a href="https://www.instagram.com//" target="_blank">Instagram</a>
-				<a href="https://www.linkedin.com/" target="_blank">Linkedin</a>
-				<a href="https://tiktok.com/" target="_blank">TikTok</a>
+				<a href="https://www.instagram.com/hermosasoftware/" target="_blank">Instagram</a>
+				<a href="https://www.linkedin.com/company/hermosa-software/" target="_blank">Linkedin</a>
 			</div>
 			<div class="col-span-3 row-start-1 lg:col-span-2 lg:col-start-4 lg:row-start-auto">
 				<div class="flex flex-col gap-2">
 					<a href={translatePath("/")}>Home</a>
-					<a href={translatePath("/blog/")}>Blog</a>
-					<a href={translatePath("/tags/")}>Tags</a>
 					<a href={translatePath("/contact/")}>{t("contacts")}</a>
 					<a href={translatePath("/terms/")}>Terms</a>
 					<a href={translatePath("/privacy/")}>Privacy Policy</a>
-					<a href={translatePath("/rss.xml")}>RSS</a>
 				</div>
 			</div>
 			<div class="col-span-3 mt-10 lg:col-start-4">
 				<div class="relative flex flex-col overflow-hidden"></div>
 				<div class="relative mt-1 flex h-8 flex-col overflow-hidden">
-					<a href="mailto:test@mintaka.co" class="block cursor-pointer overflow-hidden">test@mintaka.co</a>
+					<a href="mailto:contact@hermosasoftware.io" class="block cursor-pointer overflow-hidden">contact@hermosasoftware.io</a>
 				</div>
 			</div>
 		</div>
+		<!--
 		<div class="col-span-6 row-start-1 text-5xl leading-tight lg:col-span-4 lg:row-start-auto lg:text-6xl">
 			<!-- Newsletter Section -->
-			<div>{t("footer.newsletter")}</div>
+			<!-- <div>{t("footer.newsletter")}</div>
 			<div>{t("footer.newsletter2")}</div>
 			<Newsletter />
-		</div>
+		</div> -->
 	</div>
 	<div class="relative mt-4 flex w-full items-end justify-between gap-y-4 text-sm lg:text-xl lg:font-normal">
-		<div>©2023 YOUR COMPANY</div>
+		<div class="w-full flex justify-center">
+			©{new Date().getFullYear()} Hermosa Software LLC
+		</div>
 		<!-- https://codepen.io/fliseno1k/pen/WNboLBy -->
 		<button
 			id="go-top-button"
