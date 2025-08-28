@@ -2,7 +2,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
-import node from "@astrojs/node";
+import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
@@ -11,12 +11,7 @@ export default defineConfig({
 	experimental: {
 		session: true,
 	},
-	adapter: node({
-    	mode: "middleware",
-		session: {
-			storage: "filesystem"
-		}
-  	}),
+  	adapter: vercel(),
 	vite: {
 		server: {
 			watch: {
@@ -24,7 +19,7 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://mintaka.co",
+	site: "https://hermosasoftware.io/",
 	i18n: {
 		defaultLocale: "en",
 		locales: ["en", "it"],

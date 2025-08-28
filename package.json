@@ -6,10 +6,10 @@
 	"description": "majestico.co website",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/majesticooss/mintaka.git"
+		"url": "https://github.com/hermosasoftware/herso-landing.git"
 	},
-	"bugs": "https://github.com/majesticooss/mintaka/issues",
-	"homepage": "https://mintaka.co",
+	"bugs": "https://github.com/hermosasoftware/herso-landing/issues",
+	"homepage": "https://hermosasoftware.io/",
 	"files": [
 		"*"
 	],
@@ -23,7 +23,6 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "4.0.8",
-		"@astrojs/node": "^9.4.3",
 		"@astrojs/rss": "4.0.11",
 		"@astrojs/sitemap": "3.2.1",
 		"@astrojs/tailwind": "6.0.0",
@@ -34,6 +33,7 @@
 		"tailwindcss": "3.4.1"
 	},
 	"devDependencies": {
+		"@astrojs/vercel": "^8.2.6",
 		"@astrolib/seo": "1.0.0-beta.8",
 		"@cloudflare/workers-types": "4.20250214.0",
 		"@iconify-json/ic": "1.2.2",
