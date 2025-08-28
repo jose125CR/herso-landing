@@ -2,11 +2,21 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import node from "@astrojs/node";
 import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
 	output: "server",
+	experimental: {
+		session: true,
+	},
+	adapter: node({
+    	mode: "middleware",
+		session: {
+			storage: "filesystem"
+		}
+  	}),
 	vite: {
 		server: {
 			watch: {
