@@ -18,9 +18,9 @@ const entry = Astro.props;
 const { Content } = await entry.render();
 
 const seo: AstroSeoProps = {
-	title: `Project ${entry.data.title} - Majestico`,
+	title: `Project ${entry.data.title} - Hermosa Software`,
 	description: entry.data.description,
-	canonical: `https://mintaka.co/work/${entry.slug}/`,
+	canonical: `https://hermosasoftware.io/work/${entry.slug}/`,
 	openGraph: {
 		url: entry.slug,
 		title: entry.data.title,
@@ -43,7 +43,7 @@ const seo: AstroSeoProps = {
 			{ url: "https://mintaka.co/opengraph/social-og.jpg" },
 			{ url: "https://mintaka.co/opengraph/twitter-og.jpg" },
 		],
-		site_name: "YourSitesName",
+		site_name: "Hermosa Software",
 	},
 	twitter: {
 		handle: "@TwitterHandle",
