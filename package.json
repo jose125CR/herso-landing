@@ -1,15 +1,15 @@
 {
-	"name": "@majesticooss/mintaka",
+	"name": "@hermosasoftware/herso-landing",
 	"type": "module",
 	"version": "0.0.1",
 	"private": true,
-	"description": "majestico.co website",
+	"description": "Hermosa Software website",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/hermosasoftware/herso-landing.git"
 	},
 	"bugs": "https://github.com/hermosasoftware/herso-landing/issues",
-	"homepage": "https://hermosasoftware.io/",
+	"homepage": "https://hermosasoftware.io",
 	"files": [
 		"*"
 	],

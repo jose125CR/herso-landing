@@ -1,13 +1,25 @@
 ---
-import fs from 'node:fs';
-import { fileURLToPath } from 'node:url';
-const clientsDirFsPath = fileURLToPath(new URL('../../../public/images/clients/', import.meta.url));
-let clientLogos: string[] = [];
-try {
-  clientLogos = fs.readdirSync(clientsDirFsPath).filter((f) => /\.(png|jpe?g|svg|webp|avif)$/i.test(f)).sort();
-} catch {}
----
+import { Image } from 'astro:assets';
+import keepmore from '@/assets/images/clients/keepmore.png';
+import ledwristbands from '@/assets/images/clients/LEDwristbands.png';
+import mav from '@/assets/images/clients/MAV.png';
+import propella from '@/assets/images/clients/Propella.png';
+import tabstr from '@/assets/images/clients/Tabstr.png';
+import privateChef from '@/assets/images/clients/the-private-chef.png';
+import ticketManager from '@/assets/images/clients/Ticket-Manager.png';
+import uvitaGastro from '@/assets/images/clients/uvita-gastro-park.png';
 
+const clientLogos = [
+  { src: keepmore, alt: 'Keepmore' },
+  { src: ledwristbands, alt: 'LED Wristbands' },
+  { src: mav, alt: 'MAV' },
+  { src: propella, alt: 'Propella' },
+  { src: tabstr, alt: 'Tabstr' },
+  { src: privateChef, alt: 'The Private Chef' },
+  { src: ticketManager, alt: 'Ticket Manager' },
+  { src: uvitaGastro, alt: 'Uvita Gastro Park' }
+];
+---
 <style>
   .clients-carousel-section { background: transparent; }
   .clients-carousel-viewport {
@@ -24,11 +36,11 @@ try {
 </style>
 
 <div class="clients-carousel-section py-12">
-  <h2 class="text-center text-2xl md:text-3xl font-bold mb-8 uppercase" style="font-family: 'Midnight', serif;">CLIENTS THAT TRUST US</h2>
+  <h2 class="text-center text-2xl md:text-3xl font-bold mb-8 uppercase" style="font-family: 'Midnight', serif;">SOME OF OUR CLIENTS</h2>
   <div class="clients-carousel-viewport">
     <div class="clients-carousel-track" data-clients-track>
       {clientLogos.map((logo) => (
-        <img src={`/images/clients/${logo}`} alt={logo.replace(/[-_]/g, ' ').replace(/\.[a-z0-9]+$/i, '')} class="client-logo" />
+        <Image src={logo.src} alt={logo.alt} class="client-logo" />
       ))}
     </div>
   </div>
