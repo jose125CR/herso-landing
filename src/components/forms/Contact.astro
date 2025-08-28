@@ -98,7 +98,7 @@ const translatePath = useTranslatedPath(lang);
 
 		const formData = new FormData(form);
 
-		const response = await fetch('https://form-email-sender-omega.vercel.app/herso', {
+		const response = await fetch('/api/send-email', {
 			method: 'POST',
 			body: JSON.stringify(Object.fromEntries(formData)),
 			headers: { 'Content-Type': 'application/json' }
